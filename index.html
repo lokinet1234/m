@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Case for Due Process | A Grid Analysis</title>
+    <title>The Case for Due Process | An Interactive Analysis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --background-color: #f5f5f5;
-            --text-color: #1a1a1a;
-            --accent-color: #e60000;
-            --border-color: #ddd;
+            --background-color: #f8f9fa;
+            --text-color: #212529;
+            --accent-color: #b30000;
+            --accent-light: #fbebeb;
+            --secondary-accent: #1e3a8a; /* For dissent */
+            --border-color: #dee2e6;
+            --card-bg: #ffffff;
+            --quote-bg: #f1f3f5;
         }
 
         body {
-            font-family: 'Inter', Arial, sans-serif; /* Explicitly sets the font family */
+            font-family: 'Inter', Arial, sans-serif;
             background-color: var(--background-color);
             color: var(--text-color);
             margin: 0;
@@ -33,145 +37,132 @@
         }
 
         /* --- Left Column: Sticky Navigation --- */
-        .toc-nav {
-            position: sticky;
-            top: 60px;
-            align-self: start;
-        }
-
-        .toc-nav .logo {
-            font-size: 1.5em;
-            font-weight: 700;
-            margin-bottom: 30px;
-            line-height: 1.3;
-        }
-
-        .toc-nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .toc-nav li {
-            margin-bottom: 12px;
-        }
-
-        .toc-nav a {
-            text-decoration: none;
-            color: #666;
-            font-size: 1em;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-
-        .toc-nav a:hover {
-            color: var(--accent-color);
-        }
+        .toc-nav { position: sticky; top: 60px; align-self: start; }
+        .toc-nav .logo { font-size: 1.5em; font-weight: 700; margin-bottom: 30px; line-height: 1.3; }
+        .toc-nav ul { list-style-type: none; padding: 0; margin: 0; }
+        .toc-nav li { margin-bottom: 12px; }
+        .toc-nav a { text-decoration: none; color: #495057; font-size: 1em; font-weight: 600; transition: color 0.2s; }
+        .toc-nav a:hover { color: var(--accent-color); }
 
         /* --- Right Column: Main Content --- */
-        .content section {
-            margin-bottom: 80px;
-        }
+        .content section { margin-bottom: 80px; }
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.3; }
+        h1 { font-family: 'Lora', serif; font-size: 3.5em; margin-bottom: 40px; color: var(--text-color); }
+        h2 { font-family: 'Lora', serif; font-size: 2.2em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--accent-color); display: inline-block; }
+        h3 { font-size: 1.6em; margin-top: 40px; margin-bottom: 15px; color: var(--text-color); }
+        p, li { font-size: 13px; line-height: 1.7; max-width: 75ch; }
+        a { color: var(--accent-color); text-decoration: none; font-weight: 600; }
+        a:hover { text-decoration: underline; }
+        strong { font-weight: 700; }
 
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.3;
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 40px;
-            color: var(--text-color);
-        }
-
-        h2 {
-            font-size: 2.2em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
-            color: var(--accent-color);
-        }
-
-        h3 {
-            font-size: 1.6em;
-            margin-top: 40px;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        h4 {
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-top: 30px;
-            margin-bottom: 10px;
-        }
+        /* --- INTERACTIVE & STYLED ELEMENTS --- */
         
-        p, li {
-            font-size: 12px;
-            line-height: 1.6; 
-            max-width: 75ch;
-        }
-
         blockquote {
+            font-family: 'Lora', serif;
             font-style: italic;
-            border-left: 3px solid var(--accent-color);
-            padding-left: 25px;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 25px;
             margin: 30px 0;
             font-size: 1.2em;
-            color: #444;
+            color: #343a40;
+            background-color: var(--card-bg);
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        blockquote.dissent-quote {
+            border-left-color: var(--secondary-accent);
         }
 
-        a {
-            color: var(--accent-color);
-            text-decoration: none;
+        .takeaway-box {
+            background-color: var(--accent-light);
+            border: 1px solid #f0c0c0;
+            border-left: 5px solid var(--accent-color);
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+        .takeaway-box h4 { margin-top: 0; color: var(--accent-color); }
+
+        .cite-button {
+            display: inline-block;
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 11px;
             font-weight: 600;
+            text-decoration: none;
+            margin: 2px;
+            transition: all 0.2s ease;
         }
+        .cite-button:hover { background-color: var(--accent-color); color: white; text-decoration: none; transform: translateY(-1px); }
 
-        a:hover {
-            text-decoration: underline;
+        .card-container, .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
-        
-        ul, ol {
-            padding-left: 25px;
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 12px rgba(0,0,0,0.08); }
+        .card h4 { margin-top: 0; color: var(--accent-color); }
+        .card p { font-size: 12px; }
         
-        strong {
-            font-weight: 700;
+        .comparison-grid .card h4 { font-family: 'Inter', sans-serif; font-size: 1.2em; text-align: center; padding-bottom: 10px; }
+        .comparison-grid .card.majority h4 { border-bottom: 2px solid var(--accent-color); }
+        .comparison-grid .card.dissent h4 { border-bottom: 2px solid var(--secondary-accent); color: var(--secondary-accent); }
+
+
+        .accordion-item, details {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            background: var(--card-bg);
+            overflow: hidden;
         }
-        
-        table {
+        .accordion-trigger, summary {
+            background: none;
+            border: none;
             width: 100%;
-            border-collapse: collapse;
-            margin: 40px 0;
-        }
-        th, td {
             text-align: left;
-            padding: 12px 15px; 
-            border-bottom: 1px solid var(--border-color);
-            font-size: 12px;
+            padding: 15px 20px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+            list-style: none; /* for summary */
         }
-        th {
-            font-weight: 700;
-            background-color: #e9e9e9;
+        .accordion-trigger:hover, summary:hover { background-color: #f8f9fa; }
+        .accordion-trigger::after, summary::after {
+            content: '+';
+            font-size: 1.5em;
+            font-weight: 300;
+            transition: transform 0.3s ease;
         }
+        .accordion-trigger.active::after, details[open] summary::after { transform: rotate(45deg); }
+        .accordion-panel { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding 0.3s ease-out; padding: 0 20px; }
+        .details-content { padding: 5px 20px 20px; }
 
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .grid-container {
-                grid-template-columns: 250px 1fr;
-            }
-        }
+        table { width: 100%; border-collapse: collapse; margin: 40px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden; }
+        th, td { text-align: left; padding: 14px 18px; border-bottom: 1px solid var(--border-color); font-size: 12px; }
+        th { font-weight: 700; background-color: #f1f3f5; }
+        tbody tr:last-child td { border-bottom: none; }
+
+        @media (max-width: 1200px) { .grid-container { grid-template-columns: 250px 1fr; } }
         @media (max-width: 992px) {
-            .grid-container {
-                grid-template-columns: 1fr;
-                padding: 30px;
-            }
-            .toc-nav {
-                position: static;
-                margin-bottom: 40px;
-                border-bottom: 2px solid var(--border-color);
-                padding-bottom: 20px;
-            }
+            .grid-container { grid-template-columns: 1fr; padding: 30px; }
+            .toc-nav { position: static; margin-bottom: 40px; border-bottom: 2px solid var(--border-color); padding-bottom: 20px; }
             h1 { font-size: 2.5em; }
         }
 
@@ -181,17 +172,16 @@
 
     <div class="grid-container">
         <nav class="toc-nav">
-            <div class="logo">A Pattern of Injustice: The Case for Due Process</div>
+            <div class="logo">A Pattern of Injustice:<br>The Case for Due Process</div>
             <ul>
                 <li><a href="#introduction">Introduction</a></li>
-                <li><a href="#misconduct">1. Prosecutorial Misconduct</a></li>
+                <li><a href="#misconduct">1. Misconduct & Concealment</a></li>
                 <li><a href="#malicious-prosecution">2. Malicious Prosecution</a></li>
                 <li><a href="#abuse-of-process">3. Abuse of Process</a></li>
                 <li><a href="#due-process-violations">4. Due Process Violations</a></li>
-                <li><a href="#substantive-defenses">5. Substantive Defenses</a></li>
-                <li><a href="#victim-blaming">6. Distinguishing from Victim-Blaming</a></li>
-                <li><a href="#procedural-violations">7. Specific Procedural Violations</a></li>
-                <li><a href="#family-law-context">8. Family Law Act Context</a></li>
+                <li><a href="#feiner-case-study">5. Case Study: Feiner v. New York</a></li>
+                <li><a href="#substantive-defenses">6. Substantive Defenses</a></li>
+                <li><a href="#procedural-violations">7. Procedural Violations</a></li>
                 <li><a href="#conclusion">Conclusion</a></li>
                 <li><a href="#publications">Publications</a></li>
             </ul>
@@ -199,94 +189,145 @@
 
         <main class="content">
 
-            <h1>A Case Study in the Weaponization of the Legal Process</h1>
-
             <section id="introduction">
                 <h2>Introduction</h2>
-                <blockquote>When in the Course of human events, it becomes necessary for one people to dissolve the political bands which have connected them with another... That whenever any Form of Government becomes destructive of these ends, it is the Right of the People to alter or to abolish it.</blockquote>
-                <blockquote>When a long train of abuses and usurpations, pursuing invariably the same Object evinces a design to reduce them under absolute Despotism, it is their right, it is their duty, to throw off such Government, and to provide new Guards for their future security.</blockquote>
-                <h3>Executive Summary</h3>
-                <p>This case presents a clear pattern of prosecutorial misconduct, malicious prosecution, and abuse of process stemming from the plaintiff’s deliberate concealment of exculpatory evidence and manipulation of legal proceedings. The defendant’s constitutional rights—under both federal and California law—were systematically violated through a calculated campaign of misrepresentation that perverted the justice system for personal gain. The proceedings have become so detached from their protective purpose that they are best described as "Kafkaesque"—a term used by courts to describe proceedings “totally lacking in notice and a meaningful opportunity to be heard.” (<em>Shango v. Jurich</em>)</p>
-                <blockquote>Kafkaesque, the majority now requires a citizen to be prepared to demonstrate that he is not a convict by immediately producing papers of an event that has been ordered obliterated from the pages of the history of his personal life. Patently, one who has been given to understand that he is not a convict should not be expected to anticipate a claim that he is and to be ready to prove that he is not.</blockquote>
+                <p>This case presents a clear pattern of malicious prosecution and abuse of process, stemming from the plaintiff’s deliberate manipulation of legal proceedings. The defendant’s constitutional rights have been systematically violated through a calculated campaign of misrepresentation that perverts the justice system for personal gain. The proceedings have become so detached from their protective purpose that they are best described as "Kafkaesque"—a term courts use to describe proceedings “totally lacking in notice and a meaningful opportunity to be heard.”</p>
+                <blockquote>Where are your papers?”—heretofore alien to this country—is made a proper question in a court of law. Kafkaesque, the majority now requires a citizen to be prepared to demonstrate that he is not a convict... Patently, one who has been given to understand that he is not a convict should not be expected to anticipate a claim that he is and to be ready to prove that he is not.</blockquote>
             </section>
 
             <section id="misconduct">
-                <h2>1. Prosecutorial Misconduct & Brady Violations</h2>
-                <h3>Legal Framework</h3>
-                <p>Under <a href="https://www.cetient.com/case/373-U.S.-83"><em>Brady v. Maryland</em>, 373 U.S. 83 (1963)</a>, the prosecution bears an absolute constitutional duty to disclose all material exculpatory evidence to the defense. This obligation extends to any evidence that tends to establish innocence, supports a defense, or impeaches the credibility of key prosecution witnesses. This duty is not merely a procedural formality but a cornerstone of fairness, intended to prevent the kind of one-sided justice seen in this case. As one Circuit Judge noted, the prosecutor's role is not simply to win but to see "that justice shall be done," a duty that is frustrated by questionable tactics aimed at securing a conviction at any cost.</p>
-                <blockquote>[P]rosecutors have a ... role as public fiduciary. In this capacity, the prosecutor occupies a quasi-judicial position in which the goal is not to win a case, but [to see] that justice shall be done. Thus, [t]o this extent, our so-called adversary system is not adversary at all; nor should it be.</blockquote>
-                <h3>Application to Present Case</h3>
-                <p>The defendant’s documented prior reports of abuse by the plaintiff constitute quintessential <em>Brady</em> material. This evidence is not merely relevant—it is <strong>material</strong> because it fundamentally alters the narrative, challenges the plaintiff's credibility, and directly supports a theory of self-defense. The failure to disclose or consider this evidence transforms the legal process from a search for truth into an instrument of the plaintiff's agenda.</p>
+                <h2>1. Misconduct & Concealment of Evidence</h2>
+                <p>A prosecutor's constitutional duty is to disclose all material exculpatory evidence to the defense. This is not merely a procedural formality but a cornerstone of a fair trial, intended to prevent one-sided justice. This duty extends to any private party initiating a quasi-criminal proceeding.</p>
+                <div class="takeaway-box">
+                    <h4>Core Principle: The Duty to Disclose</h4>
+                    <p>The prosecution's role is not simply to win but to see "that justice shall be done." This is frustrated by tactics aimed at securing a favorable outcome at any cost by concealing evidence that could exonerate the accused or impeach the accuser's credibility. The defendant’s prior documented reports of the plaintiff's abuse constitute quintessential exculpatory material.</p>
+                </div>
+                <a href="https://supreme.justia.com/cases/federal/us/373/83/" target="_blank" class="cite-button">Brady v. Maryland, 373 U.S. 83 (1963)</a>
             </section>
             
             <section id="malicious-prosecution">
                 <h2>2. Malicious Prosecution</h2>
-                <h3>Elements and Burden</h3>
-                <p>A malicious prosecution claim requires: (1) favorable termination of the prior proceeding, (2) absence of probable cause, (3) malice, and (4) damages. The core of this claim rests on the initiation of legal action for an improper purpose and without a reasonable basis.</p>
-                <h3>Lack of Probable Cause & Demonstration of Malice</h3>
-                <p>The plaintiff’s selective presentation of evidence—presenting cherry-picked communications while concealing the defendant’s documented abuse reports—vitiates any claim of probable cause. Probable cause requires a full and fair account of the facts, not a misleading narrative built on half-truths. As one authority notes, "half of the truth may amount to a lie if it is understood to be the whole." (<em>Prosser & Keeton, The Law of Torts</em>). This deliberate deception is, in itself, evidence of malice. Malice can be inferred from a sustained pattern of deceitful or malicious behavior, such as manipulating legal processes for retaliation. Such conduct demonstrates "moral turpitude," undermining the integrity of the proceedings and showing a readiness to do evil, which is the very definition of a malicious intent. (<em>See People v. Castro, 1985; Baker v. McCollan, 1979</em>).</p>
+                <p>A claim for malicious prosecution arises when legal action is initiated for an improper purpose and without a reasonable basis. The plaintiff’s selective presentation of evidence—cherry-picking communications while concealing the defendant’s documented abuse reports—vitiates any claim of probable cause. </p>
+                <blockquote>Half of the truth may amount to a lie if it is understood to be the whole.
+                    <br><small>— Prosser & Keeton, The Law of Torts</small>
+                </blockquote>
+                <p>This deliberate deception is, in itself, powerful evidence of malice. "Moral turpitude" and malicious intent can be inferred from a sustained pattern of deceitful behavior, such as manipulating legal processes for retaliation.</p>
+                <a href="#" class="cite-button">People v. Castro (1985)</a>
+                <a href="#" class="cite-button">Baker v. McCollan (1979)</a>
             </section>
             
             <section id="abuse-of-process">
                 <h2>3. Abuse of Process</h2>
-                <h3>Doctrinal Foundation</h3>
-                <p>Abuse of process occurs when legal proceedings are perverted to serve an ulterior purpose. The essence of this tort is the <strong>misuse</strong> of legal process for illegitimate ends. The law recognizes that protective orders can be a shield for victims, but when "procured through false and exaggerated testimony, it is weaponized into a sword that scars a former spouse unjustly." (<em>Kinney Sys., Inc. v. Cont'l Ins. Co.</em>).</p>
-                <h3>Weaponization of the Legal Process</h3>
-                <p>The plaintiff’s actions exemplify the weaponization of the legal system. This is evident in the strategic timing of filings, such as seeking relief in a new jurisdiction immediately after being admonished in another, a classic example of forum shopping. (<em>Kinney Sys., Inc. v. Cont'l Ins. Co.</em>). This misuse is a form of "litigation abuse," where legal mechanisms designed for safety are transformed into tools of coercive control, a behavior the legislature has specifically identified as a form of domestic abuse. (<em>SB 1141</em>).</p>
-                <h4>Recontextualization as a Tool of Fraud</h4>
-                <p>The plaintiff’s strategy relies on "recontextualization," a process where discourse is displaced and reoriented. Official language and legal processes (like case numbers or police reports) are appropriated and applied to a fraudulent situation. This institutional language, normally authoritative, becomes a tool to make the fraudulent narrative seem credible, confusing the victim and the court. By framing normal relationship communications as "harassment" and isolated incidents as a "pattern of abuse," the plaintiff recontextualizes reality to fit a false, malicious narrative.</p>
+                <p>Abuse of process occurs when legal proceedings are perverted to serve an ulterior purpose. The law recognizes that protective orders can be a shield for victims, but when "procured through false and exaggerated testimony, it is weaponized into a sword that scars a former spouse unjustly."</p>
+                <div class="takeaway-box">
+                    <h4>Weaponization of the System</h4>
+                    <p>The plaintiff’s actions exemplify the weaponization of the legal system. This is evident in the strategic timing of filings to gain an unfair advantage—a classic example of forum shopping. This misuse is a form of "litigation abuse," where legal mechanisms designed for safety are transformed into tools of coercive control.</p>
+                </div>
+                <a href="#" class="cite-button">Kinney Sys., Inc. v. Cont'l Ins. Co.</a>
+                <a href="#" class="cite-button">California SB 1141</a>
             </section>
 
             <section id="due-process-violations">
                 <h2>4. Due Process & Free Speech Violations</h2>
-                <h3>Constitutional Framework</h3>
-                <p>The Fourteenth Amendment guarantees due process of law. This includes the right to a meaningful opportunity to be heard before one is deprived of liberty or property. When courts fail to make any inquiry into factual disputes or assess witness credibility based on pleadings alone, they deny this fundamental right. (<em>In re Jessica C., 2001</em>). A court cannot resolve material factual disputes "based solely on the pleadings alone." A discretionary order based on incorrect legal assumptions or an application of improper criteria is an abuse of discretion and subject to reversal. (<em>Eneaji v. Ubboe, 2014</em>).</p>
-                <h3>Free Speech and the Right to Criticize</h3>
-                <p>The First Amendment protects the freedom to challenge official action and express disagreement "without fear of reprisal." (<em>Houston v. Hill, 1987; McCurdy v. Montgomery Cnty., 2001</em>). Threatening to terminate parental custody in retaliation for protected speech is a clearly established constitutional violation. (<em>Capp v. Cnty. of San Diego, 2019</em>). Even provocative speech, such as criticism of religion, is protected so long as it is not a direct personal attack. (<em>Cantwell v. Connecticut</em>). The plaintiff's attempt to frame the defendant's lawful speech and grievances as "harassment" is a direct assault on these constitutional protections.</p>
+                <p>The Fourteenth Amendment guarantees due process, including the right to a meaningful opportunity to be heard. This right is violated when courts fail to make any inquiry into factual disputes and instead resolve material conflicts based on pleadings alone.</p>
+                <p>Furthermore, the First Amendment protects the freedom to challenge official action "without fear of reprisal." Threatening to terminate parental custody in retaliation for protected speech is a clear constitutional violation. The central question often becomes: at what point does provocative speech lose its protection? This is the core of the "hostile audience" doctrine.</p>
+                <a href="#" class="cite-button">In re Jessica C. (2001)</a>
+                <a href="#" class="cite-button">Houston v. Hill (1987)</a>
+                <a href="#" class="cite-button">Capp v. Cnty. of San Diego (2019)</a>
+            </section>
+
+            <section id="feiner-case-study">
+                <h2>5. Case Study: Feiner v. New York & The Hostile Audience Doctrine</h2>
+                <p>A central issue in this matter is whether speech can be curtailed because of a hostile reaction from listeners. The landmark case on this topic is <i>Feiner v. New York</i>, which established the "heckler's veto" or hostile audience doctrine. The case presents two competing views on the duty of law enforcement when faced with unpopular speech that provokes anger. The prosecution often relies on the majority opinion, while the defense finds powerful support in the dissent.</p>
+
+                <div class="comparison-grid">
+                    <div class="card majority">
+                        <h4>Majority Opinion (The State's Position)</h4>
+                        <p>The Court held that petitioner Feiner was not arrested for the content of his speech, but for the dangerous <span style="background-color: #fbebeb; border-bottom: 2px solid var(--accent-color);">reaction it engendered</span>. When a speaker "passes the bounds of argument or persuasion and undertakes incitement to riot," the police have a duty to step in to prevent a breach of the peace. The Court deferred to the officers' judgment that disorder was imminent.</p>
+                    </div>
+                    <div class="card dissent">
+                        <h4>Dissenting Opinion (The Defense Position)</h4>
+                        <p>Justice Black argued that the police's first duty is to <span style="background-color: #eef2ff; border-bottom: 2px solid var(--secondary-accent);">protect the speaker's constitutional right to talk</span>, even from a hostile crowd. Silencing the speaker gives a "heckler's veto" to the most intolerant listeners. He warned this creates a "readily available technique" for police to suppress any unpopular views under the guise of maintaining order.</p>
+                    </div>
+                </div>
+
+                <blockquote class="dissent-quote">Finally, I cannot agree with the Court's statement that petitioner's disregard of the policeman's unexplained request amounted to such "deliberate defiance"... On the contrary, I think that the policeman's action was a "deliberate defiance" of ordinary official duty as well as of the constitutional right of free speech... I had hoped that there was no such duty [to obey arbitrary orders] in the United States.
+                <br><small>— Justice Hugo Black, Dissenting in <i>Feiner v. New York</i></small>
+                </blockquote>
+                
+                <details>
+                    <summary>Read the Full Text of Feiner v. New York</summary>
+                    <div class="details-content">
+                        <p>The following is the public-domain text of the Supreme Court case, provided for reference.</p>
+                        <hr>
+                        <p><b>MR. CHIEF JUSTICE VINSON delivered the opinion of the Court.</b><br>Petitioner was convicted of the offense of disorderly conduct... In the review of state decisions where First Amendment rights are drawn in question, we of course make an examination of the evidence to ascertain independently whether the right has been violated...</p>
+                        <p>On the evening of March 8, 1949, petitioner Irving Feiner was addressing an open-air meeting... He gave the impression that he was endeavoring to arouse the Negro people against the whites, urging that they rise up in arms and fight for equal rights. The statements before such a mixed audience "stirred up a little excitement." Some of the onlookers made remarks to the police about their inability to handle the crowd and at least one threatened violence if the police did not act... Because of the feeling that existed in the crowd both for and against the speaker, the officers finally "stepped in to prevent it from resulting in a fight."...</p>
+                        <p>We are not faced here with blind condonation by a state court of arbitrary police action... Petitioner was thus neither arrested nor convicted for the making or the content of his speech. Rather, it was the reaction which it actually engendered...</p>
+                        <p>"When clear and present danger of riot, disorder, interference with traffic upon the public streets, or other immediate threat to public safety, peace, or order, appears, the power of the State to prevent or punish is obvious." ... It is one thing to say that the police cannot be used as an instrument for the suppression of unpopular views, and another to say that, when as here the speaker passes the bounds of argument or persuasion and undertakes incitement to riot, they are powerless to prevent a breach of the peace. Affirmed.</p>
+                        <hr>
+                        <p><b>MR. JUSTICE BLACK, dissenting.</b><br>The record before us convinces me that petitioner, a young college student, has been sentenced to the penitentiary for the unpopular views he expressed... The end result of the affirmance here is to approve a simple and readily available technique by which cities and states can with impunity subject all speeches, political or otherwise, on streets or elsewhere, to the supervision and censorship of the local police. I will have no part or parcel in this holding which I view as a long step toward totalitarian authority.</p>
+                        <p>Moreover, assuming that the "facts" did indicate a critical situation, I reject the implication of the Court's opinion that the police had no obligation to protect petitioner's constitutional right to talk. The police of course have power to prevent breaches of the peace. But if, in the name of preserving order, they ever can interfere with a lawful public speaker, they first must make all reasonable efforts to protect him. Here the policemen did not even pretend to try to protect petitioner... Their duty was to protect petitioner's right to talk, even to the extent of arresting the man who threatened to interfere. Instead, they shirked that duty and acted only to suppress the right to speak.</p>
+                    </div>
+                </details>
+
             </section>
 
             <section id="substantive-defenses">
-                <h2>5. Substantive Defenses & Rebuttals</h2>
-                <h3>The Violent Victim Rule</h3>
-                <p>A defendant claiming self-defense is permitted to introduce evidence of the alleged victim's character for violence to prove the victim was the aggressor. This "violent victim rule" allows evidence of the victim's past violent acts, even if unknown to the defendant at the time. (<em>People v. DelRio, 2020</em>). This evidence is critical because it "tends to show that the victim was probably the aggressor." The defendant’s prior reports of the plaintiff's abuse are therefore admissible and essential to establishing a self-defense claim.</p>
-                <h3>Self-Defense and Creation of Danger</h3>
-                <p>The right to self-defense is forfeited by a defendant who, through their own wrongful actions, creates the circumstances under which their adversary's use of force is justified. (<em>In re Christian S.</em>). Here, it is the plaintiff who created the danger by initiating a pattern of manipulative and abusive legal actions, forcing the defendant to respond. The defendant's actions must be viewed in the context of the plaintiff's provocations.</p>
-                <h3>Mischaracterization of Defendant's Communications</h3>
-                <p>The plaintiff’s reliance on text messages as evidence of aggression is misplaced. Unlike cases where a history of domestic violence gives context to communications, here the messages were merely an expression of "thoughts and emotions expressed to a romantic partner." There is no evidence that the defendant was prone to acting violently on those emotions. (<em>People v. DelRio, supra, 54 Cal.App.5th at pp. 54-55</em>). To frame these as "harassment" is to misrepresent their nature and intent.</p>
-            </section>
-
-            <section id="victim-blaming">
-                <h2>6. Distinguishing from Victim-Blaming</h2>
-                <p>It is imperative to distinguish this defense from victim-blaming. The arguments presented here are not an attack on a genuine victim, but a refutation of a false narrative created by an abuser posing as one. Courts have recognized that not all victims react to abuse in the same way, and it is an error to require a victim to act in a certain manner (e.g., ceasing all contact) to be believed. (<em>Vinson v. Kinsey, 2023</em>). This principle, however, cuts both ways: an abuser cannot feign fear to obtain a protective order while their actions—such as initiating contact or escalating conflict—belie their claim. Given the power dynamics and language used, it is essential to consider alternative interpretations of the events described, rather than defaulting to the plaintiff's self-serving narrative.</p>
+                <h2>6. Substantive Defenses & Rebuttals</h2>
+                <div class="card-container">
+                    <div class="card">
+                        <h4>The Violent Victim Rule</h4>
+                        <p>A defendant claiming self-defense can introduce evidence of the alleged victim's character for violence to prove the victim was the aggressor. The defendant’s prior reports of the plaintiff's abuse are therefore admissible and essential.</p>
+                        <a href="#" class="cite-button">People v. DelRio (2020)</a>
+                    </div>
+                    <div class="card">
+                        <h4>Self-Defense & Created Danger</h4>
+                        <p>The right to self-defense is forfeited by one who wrongfully creates the dangerous circumstances. Here, it is the plaintiff who created the conflict by initiating manipulative legal actions, forcing the defendant to respond.</p>
+                         <a href="#" class="cite-button">In re Christian S.</a>
+                    </div>
+                    <div class="card">
+                        <h4>Mischaracterization of Speech</h4>
+                        <p>The plaintiff's reliance on text messages as "harassment" is misplaced. The communications were expressions of emotion within a relationship, not credible threats. Framing them as such is a deliberate misrepresentation.</p>
+                        <a href="#" class="cite-button">Cantwell v. Connecticut</a>
+                    </div>
+                </div>
             </section>
 
             <section id="procedural-violations">
                 <h2>7. Specific Procedural Violations</h2>
-                <h3>Pattern of Procedural Abuse</h3>
-                <p>The plaintiff’s conduct demonstrates a systematic pattern of procedural violations designed to deny the defendant fundamental due process rights:</p>
-                <ul>
-                    <li><strong>Violation of Notice Rights:</strong> Plaintiff petitioned for hearings without proper notice, denying the defendant the opportunity to prepare. An order granted without notice is only permissible upon a showing of "great or irreparable injury," a standard not met here.</li>
-                    <li><strong>Filing of Vague and Conclusory Allegations:</strong> The plaintiff's petition relied on "general comments about the father's behavior, without dates, times or places," many of which were dated years ago and subject to prior litigation. Such conclusory and vague allegations cannot support a cause of action. (<em>Haines v. Kerner, 1972; J.R. v. B.M.R.</em>).</li>
-                    <li><strong>Improper Introduction of Evidence:</strong> The introduction of voluminous new evidence at trial without prior notice is a classic ambush tactic that violates due process and rules of civil procedure designed to prevent such abuses.</li>
-                    <li><strong>Denial of Meaningful Opportunity to be Heard:</strong> The court's failure to make "inquiry whatsoever as to the basis for his objections" when faced with disputed material facts deprived the defendant of a meaningful hearing.</li>
-                    <li><strong>Misrepresentation of Evidence:</strong> Plaintiff misrepresented a series of communications as "excessive" harassment by deliberately omitting the context of an ongoing relationship and the defendant's own reports of abuse.</li>
-                </ul>
-            </section>
-
-            <section id="family-law-context">
-                <h2>8. Family Law Act Context</h2>
-                <p>The Domestic Violence Prevention Act (DVPA) has a broad protective purpose, but its provisions must be applied consistent with principles of due process and fairness. Acts of legitimate self-defense do not constitute "abuse" under the DVPA. (<em>In re Marriage of G., 2017</em>). The plaintiff’s actions—using legal processes for harassment and coercive control—are themselves a form of abuse that the DVPA was amended to address. (<em>SB 1141</em>). By engaging in manipulative litigation, the plaintiff perverts the intent of the DVPA, turning a shield for the vulnerable into a sword for the malicious. This resurrects the very fault-finding, perjury, and adversarial conflict that the 1970 no-fault divorce reforms sought to eliminate.</p>
+                <p>The plaintiff’s conduct demonstrates a systematic pattern of procedural abuse designed to deny the defendant fundamental rights. Click each item to expand.</p>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-trigger">Violation of Notice Rights</button>
+                        <div class="accordion-panel">
+                            <p>Plaintiff initiated hearings without proper notice, denying the defendant the opportunity to prepare a defense. Ex-parte orders require a showing of "great or irreparable injury," a standard not met here.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger">Vague and Conclusory Allegations</button>
+                        <div class="accordion-panel">
+                            <p>The petition relied on "general comments about the father's behavior, without dates, times or places." Such conclusory allegations are insufficient to support a cause of action and should have been dismissed.</p>
+                            <a href="#" class="cite-button">Haines v. Kerner (1972)</a>
+                            <a href="#" class="cite-button">J.R. v. B.M.R.</a>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-trigger">Denial of a Meaningful Hearing</button>
+                        <div class="accordion-panel">
+                            <p>The court's failure to make "inquiry whatsoever as to the basis for his objections" when faced with disputed material facts deprived the defendant of a meaningful hearing and the ability to confront the evidence against him.</p>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section id="conclusion">
                 <h2>Conclusion</h2>
-                <p>The plaintiff’s systematic concealment of exculpatory evidence, misrepresentation of communications, and misuse of protective-order proceedings constitute a profound abuse of the legal system. These actions violate the defendant's federal and state constitutional rights to due process and free speech. They subvert the protective purpose of the DVPA and resurrect the adversarial, fault-finding tactics that California family law has long rejected. Justice requires that the court fashion a remedial order that shields the newly-victimized party from the impact of these weaponized proceedings and holds the plaintiff accountable for this malicious campaign.</p>
+                <p>The plaintiff’s systematic concealment of evidence, misrepresentation of facts, and misuse of protective-order proceedings constitute a profound abuse of the legal system. These actions violate the defendant's constitutional rights and subvert the protective purpose of the law. Justice requires a remedial order to shield the defendant from this malicious campaign and restore integrity to the process.</p>
             </section>
 
             <section id="publications">
-                <h2>Statements & Publications</h2>
-                <h3>Statements of Contribution</h3>
-                 <table>
+                <h2>Publications</h2>
+                <table>
                     <thead>
                         <tr>
                             <th>Ref</th>
@@ -299,26 +340,42 @@
                         <tr>
                             <td>1.1</td>
                             <td>Fraternity members 3.4x more likely to commit intimate partner violence</td>
-                            <td>2007 study on fraternity membership and sexual assault, corroborated by PMC articles</td>
-                            <td><a href="https://ml-law.net/sexual-abuse-clergy-abuse/fraternities-rape-culture">ml-law.net</a></td>
+                            <td>2007 study on fraternity membership and sexual assault</td>
+                            <td><a href="https://ml-law.net/sexual-abuse-clergy-abuse/fraternities-rape-culture" target="_blank">ml-law.net</a></td>
                         </tr>
                         <tr>
                             <td>2.1</td>
-                            <td>Sociological approaches miss clinical reality</td>
+                            <td>Sociological approaches to sexual violence often miss clinical reality</td>
                             <td>Sanday (2007), Kimmel (2008), Syrett (2009)</td>
-                            <td><a href="https://nyupress.org/9780814740385/fraternity-gang-rape/">nyupress.org</a></td>
+                            <td><a href="https://nyupress.org/9780814740385/fraternity-gang-rape/" target="_blank">nyupress.org</a></td>
                         </tr>
                     </tbody>
                 </table>
-                <h3>List of Publications</h3>
-                <h4>Peer Reviewed International Journals</h4>
-                <ul><li>[Data to be populated]</li></ul>
-                <h4>arXiv Pre-prints</h4>
-                <ul><li>[Data to be populated]</li></ul>
             </section>
             
         </main>
     </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const accordionTriggers = document.querySelectorAll('.accordion-trigger');
+
+        accordionTriggers.forEach(trigger => {
+            trigger.addEventListener('click', () => {
+                const panel = trigger.nextElementSibling;
+                trigger.classList.toggle('active');
+
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                    panel.style.padding = "0 20px";
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    panel.style.padding = "15px 20px";
+                }
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
