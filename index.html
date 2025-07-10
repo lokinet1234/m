@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Pattern of Injustice: The Case for Due Process</title>
+    <style>
+        /* General Body & Typography */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            line-height: 1.8;
+            color: #333;
+            margin: 0;
+            background-color: #fdfdfd;
+        }
+
+        /* Container for Centering Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 40px;
+        }
+
+        /* Header & Navigation */
+        .site-header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 15px 0;
+            border-bottom: 3px solid #8c1d1d;
+        }
+
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .main-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: #d1b3b3;
+        }
+
+        /* Main Content Sections */
+        h1, h2 {
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #555;
+        }
+
+        /* Interactive Epigraph Section */
+        .epigraph-section {
+            background-color: #f0f0f0;
+            padding: 40px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .epigraph-quote {
+            position: relative; /* Needed for tooltip positioning */
+            display: block;
+            font-style: italic;
+            color: #444;
+            margin: 25px 0;
+            padding: 15px;
+            border-left: 3px solid #ccc;
+            cursor: default; /* Change cursor to show it's not just text */
+        }
+        
+        /* The Tooltip (Hidden by Default) */
+        .tooltip {
+            visibility: hidden;
+            width: 300px;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 110%; /* Position above the quote */
+            left: 50%;
+            margin-left: -150px; /* Center the tooltip */
+            opacity: 0;
+            transition: opacity 0.4s ease-in-out;
+            font-style: normal;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        /* Show the tooltip on hover */
+        .epigraph-quote:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Summary Section */
+        .summary-section p {
+            font-size: 1.1em;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: #1a1a1a;
+            color: #aaa;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">Foundations of Justice</div>
+            <nav class="main-nav">
+                <a href="#">The Legal Claims</a>
+                <a href="#">The Human Story</a>
+                <a href="#">Timeline of Injustice</a>
+                <a href="#">Evidence Hub</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="epigraph-section">
+            <div class="container">
+                <h1 style="margin-bottom: 40px;">Foundational Principles of Liberty & Due Process</h1>
+
+                <!-- Interactive Quote 1 -->
+                <blockquote class="epigraph-quote">
+                    When in the Course of human events, it becomes necessary for one people to dissolve the political bands which have connected them with another... whenever any Form of Government becomes destructive of these ends, it is the Right of the People to alter or to abolish it.
+                    <span class="tooltip">
+                        <strong>Relevance:</strong> This quote from the Declaration of Independence establishes the fundamental right to challenge oppressive systems—a core theme of our argument that the legal process itself was weaponized.
+                    </span>
+                </blockquote>
+
+                <!-- Interactive Quote 2 -->
+                <blockquote class="epigraph-quote">
+                    In order for the State... to justify prohibition of a particular expression of opinion, it must be able to show that its action was caused by something more than a mere desire to avoid the discomfort and unpleasantness that always accompany an unpopular viewpoint.
+                    <span class="tooltip">
+                        <strong>Relevance:</strong> This legal standard underscores our First Amendment claim, arguing that the defendant's lawful speech was unjustly silenced through the manipulation of legal proceedings.
+                    </span>
+                </blockquote>
+
+                <!-- Interactive Quote 3 -->
+                <blockquote class="epigraph-quote">
+                    ...the people of this nation have ordained in the light of history, that, in spite of the probability of excesses and abuses, these liberties are, in the long view, essential to enlightened opinion and right conduct on the part of the citizens of a democracy.
+                    <span class="tooltip">
+                        <strong>Relevance:</strong> This speaks to the high value placed on free expression, even when it is messy or confrontational. The plaintiff's actions aimed to bypass this principle by recasting protected speech as a crime.
+                    </span>
+                </blockquote>
+
+                <!-- Interactive Quote 4 -->
+                <blockquote class="epigraph-quote">
+                    When a long train of abuses and usurpations, pursuing invariably the same Object evinces a design to reduce them under absolute Despotism, it is their right, it is their duty, to throw off such Government...
+                    <span class="tooltip">
+                        <strong>Relevance:</strong> This powerful statement frames the case not as an isolated incident, but as a calculated pattern of procedural abuse designed to achieve an unjust end, justifying the need for redress.
+                    </span>
+                </blockquote>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="summary-section">
+                <h2>Executive Summary</h2>
+                <p>
+                    This case presents a clear pattern of prosecutorial misconduct, malicious prosecution, and abuse of process stemming from the plaintiff’s deliberate concealment of exculpatory evidence and manipulation of legal proceedings. The defendant’s constitutional rights—under both federal and California law—were systematically violated through a calculated campaign of misrepresentation that perverted the justice system for personal gain.
+                </p>
+                <p>
+                    We further show how this conduct contravenes the principles underlying the California Family Law Act of 1970, which abandoned a fault-based divorce regime to eliminate perjury and adversarial fault-finding. The very adversarial, fault-seeking tactics now used by the plaintiff mirror the disfavored practices the 1970 reforms sought to eradicate.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2025 | A presentation of the facts and legal arguments concerning due process violations. This website is for informational purposes only.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
