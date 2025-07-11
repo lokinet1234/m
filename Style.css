@@ -3,9 +3,9 @@
     --text-color: #FFFFFF;
     --accent-color: #dc2626;
     --accent-light: #1e293b;
-    --secondary-accent: #000FF;
+    --secondary-accent: #000FFF;
     --border-color: #374151;
-    --card-bg: #1e293b;
+    --card-bg: #AAAA00;
     --quote-bg: #1e293b;
     --gradient: linear-gradient(135deg, #dc2626 0%, #3b82f6 100%);
 }
