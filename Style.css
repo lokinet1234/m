@@ -37,7 +37,7 @@ body {
     display: grid;
     grid-template-columns: 360px 1fr;
     gap: 80px;
-    max-width: 1800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 80px;
     backdrop-filter: blur(10px);
@@ -54,10 +54,10 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 .toc-nav .logo {
-    font-size: 2em;
-    font-weight: bold;
-    margin-bottom: 40px;
-    line-height: 1.2;
+    font-size: 1em;
+    font-weight: REGULAR;
+    margin-bottom: 20px;
+    line-height: 0.9;
     background: var(--gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -68,17 +68,17 @@ body {
     margin: 0;
 }
 .toc-nav li {
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 .toc-nav a {
     text-decoration: none;
     color: var(--text-color);
     font-size: 1.1em;
-    font-weight: 600;
+    font-weight: 300;
     transition: color 0.3s, transform 0.3s;
     display: block;
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 2px;
 }
 .toc-nav a:hover {
     color: var(--accent-color);
@@ -91,13 +91,13 @@ body {
     margin-bottom: 100px;
     padding: 40px;
     background: rgba(30, 41, 59, 0.9);
-    border-radius: 12px;
+    border-radius: 4px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 h1, h2, h3, h4 {
-    font-family: 'GT Walsheim', 'Lora', serif;
+    font-family: 'GT Walsheim', 'HELVECTICA', serif;
     font-weight: bold; /* Use bold font for headings */
-    line-height: 1.2;
+    line-height: 1;
     background: linear-gradient(45deg, #b0b0b0, #ffffff, #b0b0b0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -129,7 +129,7 @@ p, li {
 a {
     color: var(--accent-color);
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 300;
     transition: color 0.3s;
 }
 a:hover {
@@ -176,7 +176,7 @@ strong {
     border-left: 6px solid #c62828;
     padding: 20px 25px;
     margin: 20px 0;
-    border-radius: 8px;
+    border-radius: 4px;
     font-weight: 600;
     color: #c62828;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
@@ -221,7 +221,7 @@ blockquote.dissent-quote {
     border-left: 6px solid var(--accent-color);
     padding: 25px;
     margin: 40px 0;
-    border-radius: 12px;
+    border-radius: 6px;
     position: relative;
     transition: transform 0.3s;
 }
