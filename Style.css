@@ -1,9 +1,9 @@
 :root {
     --background-color: #000000;
-    --text-color: #FFFFF;
+    --text-color: #FFFFFF;
     --accent-color: #dc2626;
     --accent-light: #1e293b;
-    --secondary-accent: #3b82f6;
+    --secondary-accent: #000FF;
     --border-color: #374151;
     --card-bg: #1e293b;
     --quote-bg: #1e293b;
@@ -50,7 +50,7 @@ body {
     align-self: start;
     background: rgba(30, 41, 59, 0.9);
     padding: 30px;
-    border-radius: 12px;
+    border-radius: 6px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 .toc-nav .logo {
