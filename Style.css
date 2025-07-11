@@ -30,7 +30,7 @@ body {
     color: var(--text-color);
     margin: 0;
     -webkit-font-smoothing: antialiased;
-    line-height: 1.6;
+    line-height: 1.1;
 }
 
 .grid-container {
